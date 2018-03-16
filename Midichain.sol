@@ -29,8 +29,8 @@ contract Midichain {
 
   function mashupMidiWith(bytes32 mashup, bytes32[2] sources) public {
     require(validMidi(mashup));
-    require(validMidi[sources[0]]);
-    require(validMidi[sources[1]]);
+    require(validMidi(sources[0]));
+    require(validMidi(sources[1]));
     midiVotes[sources[0]] += 1;
     midiVotes[sources[1]] += 1;
     mashedUpFrom[mashup] = sources;

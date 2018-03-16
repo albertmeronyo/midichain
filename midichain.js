@@ -21,5 +21,11 @@ contractInstance.totalUsesFor.call('QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hz
 contractInstance.totalUsesFor.call('QmWCbdUtsp2NKtkApCGMLGpTsxYZcCJb7G7Xjv2htBHbmu');
 
 // new Midi using Michelle and Smells!
-contractInstance.useMidi('QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ', {from: web3.eth.accounts[0]});
-contractInstance.useMidi('QmWCbdUtsp2NKtkApCGMLGpTsxYZcCJb7G7Xjv2htBHbmu', {from: web3.eth.accounts[0]});
+contractInstance.useMidi('QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ', {from: web3.eth.accounts[0], gas: 4700000});
+contractInstance.useMidi('QmWCbdUtsp2NKtkApCGMLGpTsxYZcCJb7G7Xjv2htBHbmu', {from: web3.eth.accounts[0], gas: 4700000});
+
+// mashup!!!
+contractInstance.mashupMidiWith('QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ', ['QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ', 'QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ'], {from: web3.eth.accounts[0], gas: 4700000});
+
+// get the originals used by this mashedUp
+contractInstance.mashedUp.call('QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ', {from: web3.eth.accounts[0], gas: 4700000});
