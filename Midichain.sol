@@ -28,12 +28,17 @@ contract Midichain {
   }
 
   function mashupMidiWith(bytes32 mashup, bytes32[] sources) public {
-    require(validMidi(midi));
+    require(validMidi(mashup));
     require(validMidi[sources[0]]);
     require(validMidi[sources[1]]);
     midiVotes[sources[0]] += 1;
     midiVotes[sources[1]] += 1;
-    mashedUpFrom[midi] = sources;
+    mashedUpFrom[mashup] = sources;
+  }
+
+  function mashedUp(bytes32 mashup) public returns (bytes32[]) {
+    require(validMidi(mashup));
+    return mashedUpFrom[mashup];
   }
 
   function validMidi(bytes32 midi) view public returns (bool) {
