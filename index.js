@@ -5,8 +5,8 @@ VotingContract = web3.eth.contract(abi);
 contractInstance = VotingContract.at('0x30753e4a8aad7f8597332e813735def5dd395028');
 midis = {"QmZbtrMt1yNjb8NPdPh16TLoxSmDpmEbfuJQz6wKC5hzpJ": "candidate-1", "QmWCbdUtsp2NKtkApCGMLGpTsxYZcCJb7G7Xjv2htBHbmu": "candidate-2"}
 
-function useMidi() {
-  midiName = $("#midi").val();
+function useMidi(midiName) {
+  //midiName = $("#midi").val();
   contractInstance.useMidi(midiName, {from: web3.eth.accounts[0]}, function() {
     let div_id = midis[midiName];
     $("#" + div_id).html(contractInstance.totalUsesFor.call(midiName).toString());
