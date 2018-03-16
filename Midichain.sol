@@ -4,7 +4,7 @@ contract Midichain {
 
   mapping (bytes32 => uint8) public midiVotes;
   bytes32[] public midiList;
-  mapping (bytes32 => bytes32[]) public mashedUpFrom;
+  mapping (bytes32 => bytes32[2]) public mashedUpFrom;
 
   /* This is the constructor which will be called once when you
   deploy the contract to the blockchain. When we deploy the contract,
@@ -27,7 +27,7 @@ contract Midichain {
     midiVotes[midi] += 1;
   }
 
-  function mashupMidiWith(bytes32 mashup, bytes32[] sources) public {
+  function mashupMidiWith(bytes32 mashup, bytes32[2] sources) public {
     require(validMidi(mashup));
     require(validMidi[sources[0]]);
     require(validMidi[sources[1]]);
@@ -36,7 +36,7 @@ contract Midichain {
     mashedUpFrom[mashup] = sources;
   }
 
-  function mashedUp(bytes32 mashup) public returns (bytes32[]) {
+  function mashedUp(bytes32 mashup) public returns (bytes32[2]) {
     require(validMidi(mashup));
     return mashedUpFrom[mashup];
   }
